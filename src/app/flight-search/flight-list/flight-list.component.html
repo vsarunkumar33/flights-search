@@ -1,0 +1,89 @@
+
+
+
+<div fxLayout="row" class="container-dash">
+	<div fxFlex="76%" fxFlexOffset="12%" fxLayoutAlign="center center">
+		<ng-container *ngIf="searchData?.type == 1">
+			<div fxLayout="row wrap" class="pt-20 w-100">
+				<div fxFlex="100%" class="p-5" *ngIf="onwardsFlightList?.length > 0">
+					<ng-container *ngTemplateOutlet="tableTitle; context:{title: 'Onwards flights'}"></ng-container>
+				</div>
+				<div fxFlex="50%" *ngFor="let flight of onwardsFlightList" class="p-5">
+					<ng-container *ngTemplateOutlet="flightCart; context:{flight: flight}"></ng-container>
+				</div>
+
+				<div fxFlex="100%" fxLayoutAlign="center center" class="p-5 pt-45" *ngIf="onwardsFlightList?.length == 0">
+					<ng-container *ngTemplateOutlet="noFlight; context:{title: 'No onwards flights found'}"></ng-container>
+				</div>
+			</div>
+		</ng-container>
+
+		<ng-container *ngIf="searchData?.type == 0">
+			<div fxLayout="row wrap" class="pt-20 w-100">
+
+				<div fxFlex="50%">
+					<div fxLayout="column wrap" class="pt-20">
+						<div fxFlex class="p-5">
+							<ng-container *ngTemplateOutlet="tableTitle; context:{title: 'Onwards flights'}"></ng-container>
+						</div>
+						<div fxFlex *ngFor="let flight of onwardsFlightList"  class="p-5">
+							<ng-container *ngTemplateOutlet="flightCart; context:{flight: flight}"></ng-container>
+						</div>
+						<div fxFlex class="p-5" *ngIf="onwardsFlightList?.length == 0">
+							<ng-container *ngTemplateOutlet="noFlight; context:{title: 'No onwards flights found'}"></ng-container>
+						</div>
+					</div>
+					
+				</div>
+
+				<div fxFlex="50%">
+					<div fxLayout="column wrap" class="pt-20">
+						<div fxFlex class="p-5">
+							<ng-container *ngTemplateOutlet="tableTitle; context:{title: 'Return flights'}"></ng-container>
+						</div>
+						<div fxFlex *ngFor="let flight of returnFlightList"  class="p-5">
+							<ng-container *ngTemplateOutlet="flightCart; context:{flight: flight}"></ng-container>
+						</div>
+						<div fxFlex class="p-5" *ngIf="returnFlightList?.length == 0">
+							<ng-container *ngTemplateOutlet="noFlight; context:{title: 'No return flights found'}"></ng-container>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+		
+	</div>
+</div>
+
+<ng-template #flightCart let-flight="flight">
+	<mat-card class="example-card">
+		<mat-card-title-group>
+			<mat-card-title>{{flight?.name}}</mat-card-title>
+			<mat-card-subtitle>{{ flight?.date | date:'MMM d, y' }}</mat-card-subtitle>
+			<img mat-card-sm-image [src]="flight?.image">
+		</mat-card-title-group>
+		<mat-card-content>
+			{{longText}}
+		</mat-card-content>
+	</mat-card>
+</ng-template>
+
+
+
+<ng-template #tableTitle let-title="title">
+	<mat-card class="title-card">
+		<mat-card-title-group>
+			<mat-card-title>{{title}}</mat-card-title>
+		</mat-card-title-group>
+	</mat-card>
+</ng-template>
+
+
+
+<ng-template #noFlight let-title="title">
+	<mat-card class="no-flight-card">
+		<mat-card-title-group>
+			<mat-card-title>{{title}}</mat-card-title>
+		</mat-card-title-group>
+	</mat-card>
+</ng-template>

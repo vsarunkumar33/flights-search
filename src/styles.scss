@@ -1,0 +1,79 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  margin: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.form-header {
+  padding: 10px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.search-dash {
+  background-color: white;
+}
+
+.heading-dash {
+  color: white;
+  font-size: 30px !important;
+}
+
+.p-5 { padding: 5px; }
+.pt-10 { padding-top: 10px; }
+.pt-20 { padding-top: 20px; }
+.pt-45 { padding-top: 45px; }
+.w-100 { width: 100%; }
+.z-ind-1 { z-index: 1 }
+.z-ind-2 { z-index: 2 }
+
+@media screen and (max-width: 739px) {
+  .dis-app-none {
+    display: none;
+  }
+}
+
+
+@media screen and (min-width: 960px) {
+  .search-dash {
+    border: 1px solid #eae1e1;
+    border-radius: 4px;
+    padding: 15px 25px;
+  }
+
+  .container-dash {
+    padding-top: 50px;
+    padding-bottom: 150px;
+    padding-left: 50px;
+  }
+}
+
+.container-dash {
+  background-image: url('assets/images/dashboard-bg.jpeg');
+  background-size: cover;
+}
+
+.err-input {
+  position: absolute;
+  display: block;
+  bottom: -18px;
+  font-size: 12px;
+  left: -11px;
+  color: red;
+}
+
+.input-disable {
+  pointer-events: none;
+  opacity: 0.6;
+}

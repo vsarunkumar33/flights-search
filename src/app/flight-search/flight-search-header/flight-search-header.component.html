@@ -1,0 +1,42 @@
+
+<div fxLayout class="modifySearch">
+	<div fxFlex="12%" fxFlexOffset="12%" fxLayoutAlign="center center" class="labl">
+		<div>
+			<div class="city">{{ searchData?.from }}</div>
+			<div class="airpt">FROM</div>
+		</div>
+	</div>
+
+	<div fxFlex="12%" fxLayoutAlign="center center" class="labl">
+		<div>
+			<div class="city">{{ searchData?.to }}</div>
+			<div class="airpt">TO</div>
+		</div>
+	</div>
+
+	<div fxFlex="13%" fxLayoutAlign="center center" class="labl">
+		<div>
+			<div class="city">{{ searchData?.startDate | date:'MMM d, y' }}</div>
+			<div class="airpt">ONWARDS</div>
+		</div>
+	</div>
+
+	<div fxFlex="13%" fxLayoutAlign="center center" class="labl">
+		<div  *ngIf="searchData?.type == 0">
+			<div class="city">{{ searchData?.returnDate | date:'MMM d, y' }}</div>
+			<div class="airpt">RETURNS</div>
+		</div>
+	</div>
+
+	<div fxFlex="13%" fxLayoutAlign="center center" class="labl">
+		<div>
+			<div class="city">{{ searchData?.passengerCount }}</div>
+			<div class="airpt">PASSENGERS</div>
+		</div>
+	</div>
+
+	<div fxFlex="12%" fxLayoutAlign="center center" class="labl">
+		<button mat-raised-button (click)="openDialog()">Modify</button>
+	</div>
+	
+</div>

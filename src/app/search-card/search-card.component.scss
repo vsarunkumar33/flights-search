@@ -1,0 +1,28 @@
+.btn-search {
+    background-color: #ED1C24;
+    color: white;
+    width: 169px;
+    height: 49px;
+    border: 1px solid #bd040b;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 4px;
+    line-height: 46px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    float: right;
+    &:hover {
+        border-color: #bd040b;
+        background: #bd040b;
+    }
+}
+
+mat-icon {
+    position: absolute;
+    right: 4px;
+    bottom: 15px;
+    color: #9a9595;
+    font-size: 30px;
+}

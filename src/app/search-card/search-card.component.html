@@ -1,0 +1,119 @@
+<div fxLayout="row">
+	<div fxFlex="100%" fxFlex.gt-sm="780px" class="search-dash">
+		<mat-tab-group 
+			mat-align-tabs="start" 
+			(selectedTabChange)="onChangeTab($event)" 
+			animationDuration="0"
+			[selectedIndex]="travelType"
+		>
+			<mat-tab label="Round trip"></mat-tab>
+			<mat-tab label="One way"></mat-tab>
+		</mat-tab-group>
+		<ng-container *ngTemplateOutlet="headerSearch"></ng-container>
+
+	</div>
+
+</div>
+
+
+
+<ng-template #headerSearch>
+	<form  [formGroup]="form" id="search-form" class="form-header" autocomplete="off">
+		<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="mt-15">
+			<div fxFlex="50%">
+				<mat-form-field appearance="fill">
+				    <mat-label>FROM</mat-label>
+
+				    <input type="text"
+				           matInput
+				           formControlName="from"
+				           [matAutocomplete]="autoFrom">
+				    <mat-autocomplete autoActiveFirstOption #autoFrom="matAutocomplete">
+				      <mat-option *ngFor="let option of filteredOptionsFrom | async" [value]="option">
+				        {{option}}
+				      </mat-option>
+				    </mat-autocomplete>
+
+				    <span class="err-input" *ngIf="(formSubmitted || f.from.touched) && f.from.hasError('required')">
+			        	This field is required
+				    </span>
+				</mat-form-field>
+			</div>
+			<div fxFlex="50%">
+				<mat-form-field appearance="fill">
+					<mat-label>TO</mat-label>
+					<input type="text"
+				           matInput
+				           formControlName="to"
+				           [matAutocomplete]="autoTo">
+				    <mat-autocomplete autoActiveFirstOption #autoTo="matAutocomplete">
+				      <mat-option *ngFor="let option of filteredOptionsTo | async" [value]="option">
+				        {{option}}
+				      </mat-option>
+				    </mat-autocomplete>
+
+				    <span class="err-input" *ngIf="(formSubmitted || f.to.touched) && f.to.hasError('required')">
+			        	This field is required
+				    </span>
+				</mat-form-field>
+			</div>
+		</div>
+
+
+
+		<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center center" class="mt-15">
+			<div fxFlex="33%">
+				<mat-form-field appearance="fill">
+					<mat-label>DEPARTURE</mat-label>
+					<input type="text" [min]="minStartDate" [max]="maxStartDate" (ngModelChange)="onChangeStartDate($event)" formControlName="startDate" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" data-date-format="dd-mm-yyyy" readonly matInput/>
+					<owl-date-time pickerType="calendar" #dt1></owl-date-time>
+					<mat-icon [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1">date_range</mat-icon>
+				    <span class="err-input" *ngIf="(formSubmitted || f.startDate.touched) && f.startDate.hasError('required')">
+			        	This field is required
+				    </span>
+				</mat-form-field>
+			</div>
+
+			<div fxFlex="33%" [ngClass]="{'input-disable': travelType != 0}">
+				<mat-form-field appearance="fill">
+					<mat-label>RETURN</mat-label>
+					<input type="text" [min]="minReturnDate" (ngModelChange)="onChangeReturnDate($event)" formControlName="returnDate" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" data-date-format="dd-mm-yyyy" readonly matInput/>
+					<owl-date-time pickerType="calendar" #dt2></owl-date-time>
+					<mat-icon [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2">date_range</mat-icon>
+				    <span class="err-input" *ngIf="(formSubmitted || f.returnDate.touched) && f.returnDate.hasError('required')">
+			        	This field is required
+				    </span>
+				</mat-form-field>
+			</div>
+
+			<div fxFlex="33%">
+				<mat-form-field appearance="fill">
+					<mat-label>PASSENGERS COUNT</mat-label>
+					<input formControlName="passengerCount" numberOnly matInput/>
+				    <span class="err-input" *ngIf="(formSubmitted || f.passengerCount.touched) && f.passengerCount.hasError('required')">
+			        	This field is required
+				    </span>
+				</mat-form-field>
+			</div>
+
+		</div>
+
+		<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center"  class="mt-15">
+			<div fxFlex>
+				<mat-divider></mat-divider>
+			</div>
+		</div>
+
+		
+
+		<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center"  class="mt-15">
+			<div fxFlex>
+				<button type="submit" class="btn-search" (click)="onSubmit()">Search Flights</button>
+			</div>
+		</div>
+
+	</form>
+	
+</ng-template>
+
+

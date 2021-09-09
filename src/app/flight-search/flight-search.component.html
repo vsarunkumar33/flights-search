@@ -1,0 +1,10 @@
+
+<app-flight-search-header 
+	(openModify)="openDialog($event)" 
+	[searchData]="searchData"
+></app-flight-search-header>
+
+<app-flight-list
+	[searchData]="searchData"
+></app-flight-list>
+    
