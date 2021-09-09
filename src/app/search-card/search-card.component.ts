@@ -45,6 +45,8 @@ export class SearchCardComponent implements OnInit {
       returnDate: ['', [Validators.required]],
       passengerCount: ['', [Validators.required]],
       type: [0]
+    }, {
+      validator: NotMatch('from', 'to')
     });
   }
 
@@ -198,4 +200,23 @@ export class SearchCardComponent implements OnInit {
 
   get f() { return this.form.controls; }
 
+}
+
+export function NotMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.notMatch) {
+      // return if another validator has already found an error on the matchingControl
+      return;
+    }
+
+    // set error on matchingControl if validation fails
+    if (control.value === matchingControl.value) {
+      matchingControl.setErrors({ notMatch: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  }
 }

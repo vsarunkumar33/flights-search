@@ -55,6 +55,9 @@
 				    <span class="err-input" *ngIf="(formSubmitted || f.to.touched) && f.to.hasError('required')">
 			        	This field is required
 				    </span>
+				    <span class="err-input" *ngIf="(formSubmitted || f.to.touched) && f.to.hasError('notMatch')">
+			        	From and To can't be same.
+				    </span>
 				</mat-form-field>
 			</div>
 		</div>

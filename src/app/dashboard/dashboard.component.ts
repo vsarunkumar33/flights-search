@@ -9,18 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   
-  searchData: any;
-
   constructor() {}
 
   ngOnInit(): void {
-    this.searchData = {
-      from: '',
-      to: '',
-      startDate: '',
-      returnDate: '',
-      passengerCount: '',
-    };
   }
 
 }
