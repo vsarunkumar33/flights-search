@@ -45,7 +45,6 @@ export class FlightSearchComponent implements OnInit {
     dialogRef.componentInstance.searchData = this.searchData;
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       // this.animal = result;
     });
   }
@@ -66,7 +65,6 @@ export class ModifyDialog {
   constructor(
     public dialogRef: MatDialogRef<ModifyDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log('data  ', data)
   }
 
   onBtnClick(event): void {

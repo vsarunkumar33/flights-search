@@ -1,8 +1,8 @@
 
-
-
 <div fxLayout="row" class="container-dash">
 	<div fxFlex="76%" fxFlexOffset="12%" fxLayoutAlign="center center">
+
+		<!-- One way flight list container -->
 		<ng-container *ngIf="searchData?.type == 1">
 			<div fxLayout="row wrap" class="pt-20 w-100">
 				<div fxFlex="100%" class="p-5" *ngIf="onwardsFlightList?.length > 0">
@@ -18,6 +18,7 @@
 			</div>
 		</ng-container>
 
+		<!-- Return flight list container -->
 		<ng-container *ngIf="searchData?.type == 0">
 			<div fxLayout="row wrap" class="pt-20 w-100">
 
@@ -56,6 +57,7 @@
 </div>
 
 
+<!-- Single Flight card -->
 <ng-template #flightCart let-flight="flight">
 	<mat-card class="example-card">
 		<mat-card-title-group>
@@ -70,6 +72,7 @@
 </ng-template>
 
 
+<!-- Heading title for card -->
 <ng-template #tableTitle let-title="title">
 	<mat-card class="title-card">
 		<mat-card-title-group>
@@ -79,6 +82,7 @@
 </ng-template>
 
 
+// No flight found card
 <ng-template #noFlight let-title="title">
 	<mat-card class="no-flight-card">
 		<mat-card-title-group>

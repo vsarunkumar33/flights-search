@@ -27,7 +27,6 @@ export class FlightListComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes.searchData)
     if (this.searchData && changes.searchData) {
       this.getFilteredData();
     }
@@ -37,7 +36,6 @@ export class FlightListComponent implements OnInit {
     this.flightSearchService.getFlightList()
       .subscribe((res: any) => {
         this.allFlightList = res;
-        console.log('resss ', res);
         this.getFilteredData();
       });
   }
@@ -64,8 +62,6 @@ export class FlightListComponent implements OnInit {
           return ele
         }
       })
-    console.log(this.onwardsFlightList)
-    console.log(this.returnFlightList)
   }
 
 }

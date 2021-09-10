@@ -119,8 +119,6 @@ export class SearchCardComponent implements OnInit {
     qParams['type'] = this.f.type.value;
     qParams['passengerCount'] = this.f.passengerCount.value;
 
-
-    
     return qParams;
   }
 
